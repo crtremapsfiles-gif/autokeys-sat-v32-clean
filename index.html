@@ -38,7 +38,7 @@ const main=document.getElementById('main');
 function money(x){return Number(x||0)} function profitOT(o){return money(o.income_service)-money(o.expense_parts)} function profitFS(f){return money(f.price)-money(f.internal_cost)}
 function next(prefix,list,field){const y=new Date().getFullYear();const nums=list.map(x=>x[field]||'').filter(x=>x.startsWith(prefix+'-'+y+'-')).map(x=>parseInt(x.split('-').pop())).filter(Boolean);return prefix+'-'+y+'-'+String((nums.length?Math.max(...nums)+1:1)).padStart(6,'0')}
 async function loadAll(){err='';msg='';let r=await Promise.all([sb.from('orders').select('*').order('created_at',{ascending:false}),sb.from('stock_items').select('*').order('created_at',{ascending:false}),sb.from('distributors').select('*').order('created_at',{ascending:false}),sb.from('file_services').select('*').order('created_at',{ascending:false})]);for(let x of r){if(x.error){err=x.error.message;return render()}}orders=r[0].data||[];stock=r[1].data||[];distributors=r[2].data||[];files=r[3].data||[];render()}
-function ShoeshowTop(){return (err?'<div class="alert">'+err+'</div>':'')+(msg?'<div class="ok">'+msg+'</div>':'')}
+function Shoe showTop(){return (err?'<div class="alert">'+err+'</div>':'')+(msg?'<div class="ok">'+msg+'</div>':'')}
 function field(label,k,type='text'){return `<label>${label}<input type="${type}" value="${selected?.[k]??''}" oninput="selected['${k}']=this.value"></label>`}
 function area(label,k){return `<label>${label}<textarea oninput="selected['${k}']=this.value">${selected?.[k]??''}</textarea></label>`}
 function sel(label,k,opts){return `<label>${label}<select onchange="selected['${k}']=this.value">${opts.map(o=>`<option ${selected?.[k]===o?'selected':''}>${o}</option>`).join('')}</select></label>`}
