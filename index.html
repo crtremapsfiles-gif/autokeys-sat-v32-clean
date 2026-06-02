@@ -30,7 +30,7 @@
 <button onclick="go('panel')">Panel</button><button onclick="createOrder()">Nueva OT</button><button onclick="go('orders')">Órdenes</button><button onclick="createStock()">Añadir Stock</button><button onclick="go('stock')">Stock</button><button onclick="createDistributor()">Añadir Distribuidor</button><button onclick="go('distributors')">Distribuidores</button><button onclick="createFileService()">Nuevo File Service</button><button onclick="go('files')">File Service</button><button onclick="go('finance')">Gastos / Beneficios</button><button onclick="clientCopy()">Copia cliente</button><button onclick="warranty()">Garantía GAR-001</button><button onclick="loadData()">Sincronizar</button><p>632 982 646<br>info@autokeyspro.es</p></aside><main id="appMain"></main></div>
 <script>
 const SUPABASE_URL="https://zvsekmvzkmymwostezwf.supabase.co";
-const SUPABASE_ANON_KEY="PEGA_AQUI_TU_CLAVE_LEGACY_O_PUBLISHABLE";
+const SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp2c2VrbXZ6a215d3dvc3RlendmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNjA2MDAsImV4cCI6MjA5NTgzNjYwMH0.6PGVHDSPz0o7g8XP2OXSM8RpAupKGxbhaSLw3quUORQ";
 const db=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
 let currentView="panel",selectedItem=null,orders=[],stockItems=[],distributors=[],fileServices=[],message="",errorMsg="";
 function euros(v){return Number(v||0)}function otIncome(o){return euros(o.income_service)+euros(o.income_extra)}function otCost(o){return euros(o.expense_parts)+euros(o.expense_other)}function otProfit(o){return otIncome(o)-otCost(o)}function fsProfit(f){return euros(f.price)-euros(f.internal_cost)}function today(){return new Date().toISOString().slice(0,10)}
